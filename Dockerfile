@@ -1,4 +1,4 @@
-FROM node
+FROM node:alpine
 MAINTAINER Damien Dormal <dormal.damien@gmail.com>
 
 # use changes to package.json to force Docker not to use the cache

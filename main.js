@@ -16,8 +16,10 @@ let firmwareDefaultState = {
   bri: 254,
   hue: 8418,
   sat: 140,
+  effect: 'none',
   xy: [ 0.4573, 0.41 ],
   ct: 366,
+  alert: 'select',
   colormode: 'ct'
 };
 
@@ -26,8 +28,10 @@ let myDefaultState = {
      bri: 254,
      hue: 39392,
      sat: 13,
+     effect: 'none',
      xy: [ 0.3691, 0.3719 ],
      ct: 230,
+     alert: 'select',
      colormode: 'xy'
 };
 
@@ -50,7 +54,7 @@ function checkStates() {
       let states = _.mapValues(result, v => v.state);
       // detect a newly reachable lamp
       _.each(states, (state, lampName) => {
-        let currentState = _.pick(state, ['bri', 'hue', 'sat', 'xy', 'ct', 'colormode']);
+        let currentState = _.pick(state, ['bri', 'hue', 'sat', 'effect', 'xy', 'ct', 'alert', 'colormode']);
         let previousState =  _.pick(prevStates[lampName], ['bri', 'hue', 'sat', 'xy', 'ct', 'colormode']);
 
         if (prevStates[lampName] && (JSON.stringify(currentState) !== JSON.stringify(previousState))) {
